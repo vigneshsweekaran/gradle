@@ -168,3 +168,62 @@ repositories {
     jcenter()
 }
 ```
+
+### --------------------- Including dependencies from Remote using url ---------------------------
+
+```
+repositories {
+    url "http://jcenter.bintray.com/"
+}
+```
+
+
+### -------------------- Including dependencies from private maven repository ----------------------
+
+```
+repositories {
+    // Maven cache from local system (NOT RECOMMENDED)
+    mavenLocal()
+}
+
+repositories {
+    // Private maven repository
+    maven {
+        url "http://repo.mycompany.com/maven2/"
+    }
+
+    // Private Ivy repository
+    ivy {
+        url "http://repo.mycompany.com/repo/"
+    }
+}
+```
+
+### ------------------------------------- Multiproject build --------------------------------------
+The multiproject settings is controlled in *settings.gradle* file in root folder, where we can include
+the project folders to build
+
+Each sub project will have their own *build.gradle* file
+
+build.gradle in root folder
+
+```
+// To define configuration for all projects
+allProjects {
+    plugins {
+        id "java"
+    }
+}
+
+// To define configuration at project level in main build.gradle file
+project (':app') {
+    dependencies project(':app')
+}
+```
+
+### ---------------------------------------- To install gradle wrapper -----------------------------
+gradle wrapper
+
+### ----------------------------------- To install gradle wrapper specific version ------------------
+gradle wrapper --gradle-version 7.0
+

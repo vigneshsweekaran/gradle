@@ -1,0 +1,13 @@
+// To define configuration for all projects
+allprojects {
+    version = '1.1-SNAPSHOT'
+    apply plugin: 'java'
+}
+
+// To define configuration at project level in main build.gradle file
+project (':app') {
+    // Here the app project requires library project as dependency
+    dependencies {
+        implementation project(':library')
+    }
+}
